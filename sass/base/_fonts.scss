@@ -1,0 +1,27 @@
+
+@font-face {
+    font-family: 'Circular Std Book';
+    src: url('../fonts/CircularStd-Book.eot');
+    src: local('Circular Std Book'), local('CircularStd-Book'),
+        url('../fonts/CircularStd-Book.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CircularStd-Book.woff2') format('woff2'),
+        url('../fonts/CircularStd-Book.woff') format('woff'),
+        url('../fonts/CircularStd-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*------------ headings ------------*/
+@font-face {
+    font-family: 'GT Walsheim Pro';
+    src: url('../fonts/GT-Walsheim-Pro-Bold-Trial.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT Walsheim Pro';
+    src: url('../fonts/GT-Walsheim-Pro-Medium-Trial.otf');
+    font-weight: 500;
+    font-style: normal;
+}

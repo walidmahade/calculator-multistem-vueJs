@@ -1,0 +1,27 @@
+/*======== START hero ==========*/
+#hero {
+  text-align: center;
+  overflow: hidden;
+  
+  .sec-bg {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 130px;
+    background-color: var(--dark);
+  }
+
+  .para {
+    max-width: 630px;
+    margin: 10px auto 50px auto;
+  }
+
+  .hero-image {
+    margin-top: 68px;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+}
+/*======== END hero ==========*/

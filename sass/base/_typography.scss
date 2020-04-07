@@ -1,0 +1,26 @@
+body {
+  font-family: var(--h-font);
+}
+
+
+.font-alt {
+  font-family: var(--b-font);
+  font-weight: normal;
+}
+
+/*======== START headings ==========*/
+.title-big {
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 74px;
+
+  .b {
+    font-weight: bold;
+  }
+}
+
+.para {
+  font-size: 18px;
+  line-height: 34px;
+}
+/*======== END headings ==========*/

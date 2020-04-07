@@ -1,0 +1,32 @@
+{
+  "name": "calculator-gov-aid",
+  "version": "1.0.0",
+  "description": "multistem calculator, vueJs",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm-run-all --parallel sass browser-reload",
+    "sass": "node-sass --watch sass -o css --output-style expanded --source-map true",
+    "browser-reload": "browser-sync start --server --files \"*.html,css/*.css, js/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walidmahade/calculator-multistem-vueJs.git"
+  },
+  "keywords": [
+    "multistep",
+    "form",
+    "calculator",
+    "vuejs"
+  ],
+  "author": "Mahade Walid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walidmahade/calculator-multistem-vueJs/issues"
+  },
+  "homepage": "https://github.com/walidmahade/calculator-multistem-vueJs#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
