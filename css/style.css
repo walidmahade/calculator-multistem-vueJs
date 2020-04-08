@@ -8,7 +8,7 @@
   --h-font: 'Graphik', sans-serif;
   --b-font: 'Graphik', sans-serif;
   --border-rad: 50px;
-  --progress-bar-width: 40%;
+  --progress-bar-width: 20%;
 }
 
 .theme-green {
@@ -848,6 +848,7 @@ select {
   text-align: center;
   width: var(--progress-bar-width);
   color: #fff;
+  transition: width .3s ease-out;
 }
 
 @media screen and (min-width: 768px) {

@@ -21,6 +21,7 @@
     text-align: center;
     width: var(--progress-bar-width);
     color: #fff;
+    transition: width .3s ease-out;
   }
 }
 

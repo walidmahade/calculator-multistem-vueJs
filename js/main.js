@@ -1,12 +1,12 @@
 console.log("Start code");
 // ---------- Components
-Vue.component('')
+// Vue.component('');
 
 // --------- vue instance for header
 let headerBar = new Vue({
     el: '.header',
     data: {
-        progress: 0
+        progress: 20
     },
     methods: {
         resetForm: function () {
@@ -20,12 +20,12 @@ let calculator = new Vue({
     el: '#calculator',
     data: {
         totalScreens: 0,
-        currentActiveScreen: 5,
+        currentActiveScreen: 1,
         regularMonthlyIncome: '',
         salesDiff: '',
     },
     methods: {
-        goNext: function (e) {
+        goNext: function () {
             // console.log(e.target)
             // let self = this;
             let testesPassed = this.currentActiveScreen < this.totalScreens;
@@ -33,11 +33,24 @@ let calculator = new Vue({
             // check if we should ge next
             // change active slide indicator
             if (testesPassed)
-                this.currentActiveScreen = this.currentActiveScreen + 1
+                this.currentActiveScreen = this.currentActiveScreen + 1;
+            this.updateProgressBar(this.currentActiveScreen);
+        },
+        goPrev: function () {
+            this.currentActiveScreen = this.currentActiveScreen - 1;
+            this.updateProgressBar(this.currentActiveScreen);
         },
         resetForm() {
-            this.currentActiveScreen = 1
+            this.currentActiveScreen = 1;
+            this.regularMonthlyIncome = '';
+            this.salesDiff = '';
+            this.updateProgressBar(this.currentActiveScreen);
         },
+        updateProgressBar(screen) {
+            let barProgress = screen * 20;
+            headerBar.progress = barProgress;
+            headerBar.$refs.progressBar.style.setProperty('--progress-bar-width', barProgress + "%");
+        }
         // incrementRegularMonthlyIncome() {
         //     this.regularMonthlyIncome = this.regularMonthlyIncome ? this.regularMonthlyIncome + 50000 :  50000
         // },
@@ -49,7 +62,7 @@ let calculator = new Vue({
 
     },
     created: function () {
-        // console.log(this.totalScreens);
         this.totalScreens = document.querySelectorAll('.screen').length;
+        console.log(this.totalScreens);
     }
 });
