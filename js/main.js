@@ -23,6 +23,13 @@ let calculator = new Vue({
         currentActiveScreen: 1,
         regularMonthlyIncome: '',
         salesDiff: '',
+        // calculation data
+        availableMonths: [
+            'march', 'april', 'may'
+        ],
+        formData: {
+            selectMonth: 'april'
+        }
     },
     methods: {
         goNext: function () {
