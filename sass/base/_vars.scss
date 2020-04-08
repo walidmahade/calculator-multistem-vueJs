@@ -1,13 +1,23 @@
 // color variables
 :root {
-  --primary: #07B474;
+  --primary: #FBB817;
+  --primary-light: rgba(251,184,23, 0.1);
   --dark: #181825;
   --white: #fff;
   --link: #181825;
+  --text: #212529;
 
-  --h-font: 'GT Walsheim Pro', sans-serif;
-  // --b-font: 'Circular Std', sans-serif;
-  --b-font: 'Circular Std Book', sans-serif;
+  --h-font: 'Graphik', sans-serif;
+  --b-font: 'Graphik', sans-serif;
 
-  --border-rad: 10px;
+  --border-rad: 50px;
+  --progress-bar-width: 40%;
+}
+
+.theme-green {
+  --primary: #07B474;
+}
+
+.theme-blue {
+  --primary: #06b2ff;
 }

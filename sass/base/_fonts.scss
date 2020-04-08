@@ -1,27 +1,35 @@
-
 @font-face {
-    font-family: 'Circular Std Book';
-    src: url('../fonts/CircularStd-Book.eot');
-    src: local('Circular Std Book'), local('CircularStd-Book'),
-        url('../fonts/CircularStd-Book.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/CircularStd-Book.woff2') format('woff2'),
-        url('../fonts/CircularStd-Book.woff') format('woff'),
-        url('../fonts/CircularStd-Book.ttf') format('truetype');
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Regular.eot');
+    src: local('Graphik Regular'), local('Graphik-Regular'),
+    url('../fonts/Graphik-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Graphik-Regular.woff2') format('woff2'),
+    url('../fonts/Graphik-Regular.woff') format('woff'),
+    url('../fonts/Graphik-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-/*------------ headings ------------*/
 @font-face {
-    font-family: 'GT Walsheim Pro';
-    src: url('../fonts/GT-Walsheim-Pro-Bold-Trial.otf');
-    font-weight: bold;
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Medium.eot');
+    src: local('Graphik Medium'), local('Graphik-Medium'),
+    url('../fonts/Graphik-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Graphik-Medium.woff2') format('woff2'),
+    url('../fonts/Graphik-Medium.woff') format('woff'),
+    url('../fonts/Graphik-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'GT Walsheim Pro';
-    src: url('../fonts/GT-Walsheim-Pro-Medium-Trial.otf');
-    font-weight: 500;
+    font-family: 'Graphik';
+    src: url('../fonts/Graphik-Bold.eot');
+    src: local('Graphik Bold'), local('Graphik-Bold'),
+    url('../fonts/Graphik-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Graphik-Bold.woff2') format('woff2'),
+    url('../fonts/Graphik-Bold.woff') format('woff'),
+    url('../fonts/Graphik-Bold.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
 }

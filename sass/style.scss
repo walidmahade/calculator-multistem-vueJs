@@ -1,17 +1,19 @@
 // preloader
+@import "base/vars";
 @import "library/pace";
 
 @import "base/reset";
 @import "base/helpers";
 @import "base/fonts";
-@import "base/vars";
 @import "base/typography";
 @import "base/grid";
+@import "base/form-elements";
 
 @import "themes/base-theme";
 
 @import "components/btn";
 @import "components/header";
+@import "components/progress-bar";
 @import "components/footer";
 
 @import "pages/home";

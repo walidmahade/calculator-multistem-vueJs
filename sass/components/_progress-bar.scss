@@ -1,0 +1,31 @@
+#form-progress {
+  position: relative;
+  width: 300px;
+  height: 30px;
+  background: rgba(255, 190, 38, 0.06);
+  border: 1px solid rgba(255, 190, 38, 0.2);
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-top: 45px;
+
+  .bar {
+    position: relative;
+    background: var(--primary);
+    border-radius: 19px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: var(--progress-bar-width);
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #form-progress {
+    margin-top: 0;
+  }
+}

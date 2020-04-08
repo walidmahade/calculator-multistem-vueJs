@@ -2,7 +2,7 @@
 #hero {
   text-align: center;
   overflow: hidden;
-  
+
   .sec-bg {
     max-width: 1400px;
     margin: 0 auto;
@@ -25,3 +25,146 @@
   }
 }
 /*======== END hero ==========*/
+
+/* ======= START calculator =======*/
+#calculator {
+  width: 100%;
+  max-width: 655px;
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 37, 41, 0.1);
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(33, 37, 41, 0.04);
+  border-radius: 20px;
+  margin: 20px auto 80px auto;
+  padding: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+
+  .screen {
+    display: none;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+
+  .screen--active {
+    display: block;
+    position: relative !important;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+}
+
+.calculator-header {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+
+  .go-back {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+
+    .icon {
+      margin-right: 11px;
+      transition: margin .3s ease-in-out;
+    }
+
+    &:hover {
+      .icon {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .go-reset {
+    cursor: pointer;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      transform: rotate(0);
+      transition: transform .5s ease-in-out;
+
+      rect {
+        fill: var(--primary);
+        transition: fill .5s ease-in-out;
+      }
+
+      &:hover {
+        transform: rotate(360deg);
+
+        rect {
+          fill: red;
+        }
+      }
+    }
+  }
+}
+
+/*======== screens ===========*/
+.screen-2,
+.screen-4 {
+  .btn-group {
+    border: 1px solid rgba(33, 37, 41, 0.1);
+    box-sizing: border-box;
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn {
+    width: 48.5%;
+  }
+}
+
+.screen-3 {
+  .display-text-field {
+    input {
+      background-image: url("../images/percent.svg");
+      background-repeat: no-repeat;
+      background-position: 95% 50%;
+      background-size: 16px;
+    }
+  }
+}
+
+.screen-5 {
+  .display-text-field {
+    position: relative;
+  }
+
+  .total-text {
+    position: absolute;
+    text-transform: capitalize;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 32px;
+  }
+}
+/* ======= END calculator =======*/
+@media screen and (min-width: 768px) {
+  #calculator {
+    padding: 130px;
+    margin: 100px auto 150px auto;
+  }
+}

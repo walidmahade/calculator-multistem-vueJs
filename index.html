@@ -5,15 +5,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="images/favicopn.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<h2>Hello</h2>
+<header class="header" role="banner">
+    <div class="container">
+        <div class="brand" @click="resetForm">
+            <img src="images/logo.png" alt="logo-calculator-for-corona-gov-aid">
+        </div>
+
+        <div id="form-progress">
+            <div class="bar">{{progress}}%</div>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+    <div class="container">
+
+        <div id="calculator" :data-current-screen="currentActiveScreen" :data-screen-count="totalScreens">
+
+            <div class="calculator-header" v-show="currentActiveScreen>1">
+                <div class="go-back">
+                    <span class="icon">
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.80859 0L0 5L4.80859 10L6 8.76117L2.38281 5L6 1.23883L4.80859 0Z" fill="#363D4D"/>
+                        </svg>
+                    </span>
+                    <span class="text">
+                        Back
+                    </span>
+                </div>
+
+                <div class="go-reset" @click="resetForm">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="16" height="16" rx="8"/>
+                        <path d="M10.2505 5L8 7.25L5.75 5L5 5.75L7.25 8L5 10.25L5.75 11L8 8.75L10.2505 11L11.0005 10.25L8.75053 8L11.0005 5.75L10.2505 5Z" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- START form step 1 -->
+            <div class="screen screen-1" :class="{'screen--active': currentActiveScreen === 1}" data-screen-no="1">
+                <h2 class="title-big mb-2">Først valg av måned</h2>
+                <div class="para">Hvilken måned er det?</div>
+
+                <div class="value-field mt-1 mb-4">
+                    <select name="select-month" id="select-month">
+                        <option value="march" selected>March</option>
+                        <option value="march" selected>April</option>
+                        <option value="march" selected>May</option>
+                    </select>
+                </div>
+
+                <div class="cta">
+                    <button class="btn btn--primary uppercase"
+                        @click="goNext"
+                    >Neste</button>
+                </div>
+            </div>
+            <!-- END form step 1 -->
+
+            <!-- START form step 2 -->
+            <div class="screen screen-2" :class="{'screen--active': currentActiveScreen === 2}" data-screen-no="2">
+                <div class="para mb-2">Har du hatt omsettningsfall?</div>
+
+                <div class="value-field mt-1">
+                    <div class="btn-group">
+                        <button class="btn btn--light" @click="goNext">Ja</button>
+                        <button class="btn btn--light" @click="goNext">Nei</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END form step 2 -->
+
+            <!-- START form step 3 -->
+            <div class="screen screen-3" :class="{'screen--active': currentActiveScreen === 3}" data-screen-no="3">
+                <div class="para">Hva har du normalt hatt i omsettning i Mars</div>
+
+                <div class="value-field mt-1 mb-2">
+                    <div class="number-field">
+                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 350000">
+                        <div class="btn-group">
+                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box font-400 mb-3">
+                    <b>Eks:</b> dersom du har jevn omsettning siste månedene bruk snittet i Januar og Februar. Dersom du har store variasjoner måned for måned kan du se samme måned i fjor.
+                </div>
+
+                <div class="para">Hva har du omsatt under coronatider</div>
+
+                <div class="value-field mb-3">
+                    <div class="number-field">
+                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 100000">
+                        <div class="btn-group">
+                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="para">Ditt omsettningsfall har vært</div>
+
+                <div class="value-field mt-1 mb-1 mb-4">
+                    <div class="display-text-field">
+                        <input type="text" readonly name="monthlyIncome" v-model="salesDiff" placeholder="70.25">
+                    </div>
+                </div>
+
+                <div class="cta">
+                    <button class="btn btn--primary uppercase"
+                            @click="goNext"
+                    >Neste</button>
+                </div>
+            </div>
+            <!-- END form step 3 -->
+
+            <!-- START form step 4 -->
+            <div class="screen screen-4" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
+                <div class="para mb-2">Er du pålagt å stenge</div>
+
+                <div class="value-field mt-1">
+                    <div class="btn-group">
+                        <button class="btn btn--light" @click="goNext">Ja</button>
+                        <button class="btn btn--light" @click="goNext">Nei</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END form step 4 -->
+
+            <!-- START form step 5 -->
+            <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 5}" data-screen-no="5">
+                <div class="para">Hva har du omsatt under coronatider</div>
+
+                <div class="value-field mt-1 mb-2">
+                    <div class="number-field">
+                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 350000">
+                        <div class="btn-group">
+                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="para">Ditt omsettningsfall har vært</div>
+
+                <div class="value-field mt-1 mb-1 mb-4">
+                    <div class="display-text-field">
+                        <input type="text" readonly name="monthlyIncome" v-model="salesDiff" placeholder="45000">
+                        <span class="total-text">total</span>
+                    </div>
+                </div>
+
+                <div class="info-box font-400">
+                    <div><b>Poster i næringsoppgaven:</b></div>
+                    <ul>
+                        <li>6300	Leie lokaler</li>
+                        <li>6340	Lys, varme</li>
+                        <li>6395	Renovasjon, vann, avløp, renhold mv.</li>
+                        <li>6400	Leie maskiner, inventar, transportmidler o.l.</li>
+                        <li>6700	Fremmed tjeneste (regnskap, revisjon, rådgivning o.l.)</li>
+                        <li>6995	Elektrinisk kommunikasjon</li>
+                        <li>7040	Forsikring og avgifter på transportmidler</li>
+                        <li>7490    Kontigenter</li>
+                        <li>7500	Forsikringspremie</li>
+                    </ul>
+                </div>
+
+<!--                <div class="cta">-->
+<!--                    <button class="btn btn&#45;&#45;primary uppercase"-->
+<!--                            @click="goNext"-->
+<!--                    >Neste</button>-->
+<!--                </div>-->
+            </div>
+            <!-- END form step 5 -->
+        </div>
+
+    </div>
+</main>
 
 <script src="js/library/pace.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>-->
+<script src="js/main.js"></script>
 </body>
 
 </html>

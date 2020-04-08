@@ -1,6 +1,7 @@
 /*======== START header ==========*/
-.site-header {
-  padding: 40px 0;
+.header {
+  padding: 50px 0;
+  overflow: hidden;
 
   .container {
     display: flex;
@@ -10,71 +11,19 @@
     flex-wrap: wrap;
 
     @media screen and (min-width: 768px) {
-      justify-content: flex-start;
+      justify-content: space-between;
     }
   }
 }
 
 .brand {
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 23px;
   width: 100%;
   text-align: center;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: auto;
     text-align: left;
-  }
-}
-
-.menu-item-wrap {
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  
-  @media screen and (min-width: 768px) {
-    justify-content: center;
-  }
-}
-
-.menu-item {
-  display: inline-block;
-  padding: 0 30px;
-
-  &__link {
-    transition: color .3s ease-in-out;
-    font-size: 16px;
-
-    &:hover {
-      color: var(--primary);
-    }
-  }
-}
-
-.dropdown {
-  opacity: 0;
-  position: absolute;
-}
-
-.header__menu {
-  margin-left: 100px;
-
-  .menu-item:first-child {
-    padding-left: 0;
-  }
-}
-
-.user-area-nav {
-  margin-left: auto;
-
-  .menu-item:last-child {
-    padding-right: 0;
-  }
-
-  .btn {
-    padding: 15px 20px;
   }
 }
 /*======== END header ==========*/

@@ -1,0 +1,93 @@
+input,select,textarea,button {
+  font-family: var(--b-font);
+  font-size: 16px;
+  font-weight: 500;
+
+  &::placeholder {
+    font-family: var(--b-font);
+    font-size: 16px;
+  }
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  border: 1px solid rgba(33, 37, 41, 0.1);
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 15px 40px 15px 20px;
+  display: block;
+  width: 100%;
+
+  &::placeholder {
+    opacity: .5;
+    color: #000;
+  }
+}
+
+.number-field {
+  position: relative;
+
+  .btn-group {
+    position: absolute;
+    top: 45%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    flex-wrap: wrap;
+  }
+
+  span {
+    display: inline-block;
+    line-height: 1;
+    height: 12px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .5;
+    }
+
+    img {
+      width: 11px;
+      height: auto;
+    }
+  }
+}
+
+select {
+  border: 1px solid rgba(33, 37, 41, 0.1);
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 15px 40px 15px 20px;
+  display: block;
+  width: 100%;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url("../images/down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) 50%;
+}
+
+
+.display-text-field {
+
+}
+
+.info-box {
+  font-size: 14px;
+  line-height: 22px;
+}
