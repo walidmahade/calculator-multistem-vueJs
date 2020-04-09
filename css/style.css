@@ -937,7 +937,7 @@ select {
   box-shadow: 0 20px 40px rgba(33, 37, 41, 0.04);
   border-radius: 20px;
   margin: 20px auto 80px auto;
-  padding: 85px 50px 50px 50px;
+  padding: 85px 15px 50px 15px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1056,6 +1056,10 @@ select {
   font-weight: normal;
   font-size: 16px;
   line-height: 32px;
+}
+
+.screen-5 ul li {
+  word-break: break-all;
 }
 
 .screen-5 ul li:before {
