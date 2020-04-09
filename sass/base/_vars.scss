@@ -1,7 +1,7 @@
 // color variables
 :root {
-  --primary: #FBB817;
-  --primary-light: rgba(251,184,23, 0.1);
+  --primary: #075289;
+  --primary-light: rgba(7, 82, 137, 0.1);
   --dark: #181825;
   --white: #fff;
   --link: #181825;
@@ -25,4 +25,9 @@
 .theme-blue {
   --primary: #06b2ff;
   --primary-light: rgba(6, 178, 255, 0.27);
+}
+
+.theme-yellow {
+  --primary: #FBB817;
+  --primary-light: rgba(251,184,23, 0.1);
 }

@@ -21,6 +21,10 @@
   text-align: center;
   cursor: pointer;
 
+  img {
+    max-width: 110px;
+  }
+
   @media screen and (min-width: 768px) {
     width: auto;
     text-align: left;
