@@ -20,15 +20,16 @@ let calculator = new Vue({
     el: '#calculator',
     data: {
         totalScreens: 0,
-        currentActiveScreen: 1,
-        regularMonthlyIncome: '',
-        salesDiff: '',
+        currentActiveScreen: 2,
         // calculation data
         availableMonths: [
             'march', 'april', 'may'
         ],
         formData: {
-            selectMonth: 'april'
+            selectMonth: 'april',
+            regularMonthlyIncome: '',
+            afterCoronaMonthlyIncome: '',
+            salesDiff: '',
         }
     },
     methods: {

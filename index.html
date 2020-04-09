@@ -47,6 +47,7 @@
                     </svg>
                 </div>
             </div>
+
             <!-- START form step 1 -->
             <div class="screen screen-1" :class="{'screen--active': currentActiveScreen === 1}" data-screen-no="1">
                 <h2 class="title-big mb-2">Først valg av måned</h2>
@@ -90,7 +91,7 @@
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 350000">
+                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="ex: 350000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -104,9 +105,9 @@
 
                 <div class="para">Hva har du omsatt under coronatider</div>
 
-                <div class="value-field mb-3">
+                <div class="value-field mt-1 mb-3">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 100000">
+                        <input type="number" name="monthlyIncome" v-model="formData.afterCoronaMonthlyIncome" placeholder="ex: 100000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -118,13 +119,14 @@
 
                 <div class="value-field mt-1 mb-1 mb-4">
                     <div class="display-text-field">
-                        <input type="text" readonly name="monthlyIncome" v-model="salesDiff" placeholder="70.25">
+                        <input type="text" readonly name="monthlyIncome"
+                               v-model="formData.salesDiff" placeholder="70.25">
                     </div>
                 </div>
 
                 <div class="cta">
                     <button class="btn btn--primary uppercase"
-                            @click="goNext"
+                        @click="goNext"
                     >Neste</button>
                 </div>
             </div>
@@ -149,7 +151,7 @@
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="regularMonthlyIncome" placeholder="ex: 350000">
+                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="ex: 350000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -161,7 +163,7 @@
 
                 <div class="value-field mt-1 mb-1 mb-4">
                     <div class="display-text-field">
-                        <input type="text" readonly name="monthlyIncome" v-model="salesDiff" placeholder="45000">
+                        <input type="text" readonly name="monthlyIncome" v-model="formData.salesDiff" placeholder="45000">
                         <span class="total-text">total</span>
                     </div>
                 </div>
