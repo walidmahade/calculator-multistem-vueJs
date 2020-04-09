@@ -130,7 +130,7 @@
 
                 <div class="cta">
                     <button class="btn btn--primary uppercase"
-                        @click="goNext" :disabled="!formData.salesDiff"
+                        @click="goNext" :disabled="!formData.salesDiffIsPositive"
                     >Neste</button>
                 </div>
             </div>
@@ -142,8 +142,8 @@
 
                 <div class="value-field mt-1">
                     <div class="btn-group">
-                        <button class="btn btn--light" @click="goNext">Ja</button>
-                        <button class="btn btn--light" @click="goNext">Nei</button>
+                        <button class="btn btn--light" @click="wasClosedByGov(true)">Ja</button>
+                        <button class="btn btn--light" @click="wasClosedByGov(false)">Nei</button>
                     </div>
                 </div>
             </div>
@@ -151,11 +151,11 @@
 
             <!-- START form step 5 -->
             <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
-                <div class="para">Hva har du omsatt under coronatider</div>
+                <div class="para">Hva er dine faste kostnader</div>
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="ex: 350000">
+                        <input type="number" name="monthlyIncome" v-model="formData.operationExpense" placeholder="ex: 350000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -163,11 +163,11 @@
                     </div>
                 </div>
 
-                <div class="para">Ditt omsettningsfall har vært</div>
+                <div class="para">Du kan søke om denne summen</div>
 
                 <div class="value-field mt-1 mb-1 mb-4">
                     <div class="display-text-field">
-                        <input type="text" readonly name="monthlyIncome" v-model="formData.salesDiff" placeholder="45000">
+                        <input type="text" readonly name="monthlyIncome" v-model="canApplyFor" placeholder="ex: 45000">
                         <span class="total-text">total</span>
                     </div>
                 </div>
