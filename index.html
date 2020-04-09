@@ -73,21 +73,21 @@
             <!-- END form step 1 -->
 
             <!-- START form step 2 -->
-            <div class="screen screen-2" :class="{'screen--active': currentActiveScreen === 2}" data-screen-no="2">
-                <div class="para mb-2">Har du hatt omsettningsfall?</div>
+<!--            <div class="screen screen-2" :class="{'screen&#45;&#45;active': currentActiveScreen === 2}" data-screen-no="2">-->
+<!--                <div class="para mb-2">Har du hatt omsettningsfall?</div>-->
 
-                <div class="value-field mt-1">
-                    <div class="btn-group">
-                        <button class="btn btn--light" @click="goNext">Ja</button>
-                        <button class="btn btn--light" @click="resetForm">Nei</button>
-                    </div>
-                </div>
-            </div>
+<!--                <div class="value-field mt-1">-->
+<!--                    <div class="btn-group">-->
+<!--                        <button class="btn btn&#45;&#45;light" @click="goNext">Ja</button>-->
+<!--                        <button class="btn btn&#45;&#45;light" @click="resetForm">Nei</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <!-- END form step 2 -->
 
             <!-- START form step 3 -->
-            <div class="screen screen-3" :class="{'screen--active': currentActiveScreen === 3}" data-screen-no="3">
-                <div class="para">Hva har du normalt hatt i omsettning i Mars</div>
+            <div class="screen screen-3" :class="{'screen--active': currentActiveScreen === 2}" data-screen-no="2">
+                <div class="para">Hva har du normalt hatt i omsettning i {{ formData.selectMonth }}</div>
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
@@ -107,7 +107,11 @@
 
                 <div class="value-field mt-1 mb-3">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.afterCoronaMonthlyIncome" placeholder="ex: 100000">
+                        <input type="number"
+                           name="monthlyIncome"
+                           v-model="formData.afterCoronaMonthlyIncome"
+                           placeholder="ex: 100000"
+                        >
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -120,20 +124,20 @@
                 <div class="value-field mt-1 mb-1 mb-4">
                     <div class="display-text-field">
                         <input type="text" readonly name="monthlyIncome"
-                               v-model="formData.salesDiff" placeholder="70.25">
+                               v-model="salesDiff" placeholder="70.25">
                     </div>
                 </div>
 
                 <div class="cta">
                     <button class="btn btn--primary uppercase"
-                        @click="goNext"
+                        @click="goNext" :disabled="!formData.salesDiff"
                     >Neste</button>
                 </div>
             </div>
             <!-- END form step 3 -->
 
             <!-- START form step 4 -->
-            <div class="screen screen-4" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
+            <div class="screen screen-4" :class="{'screen--active': currentActiveScreen === 3}" data-screen-no="3">
                 <div class="para mb-2">Er du pålagt å stenge</div>
 
                 <div class="value-field mt-1">
@@ -146,7 +150,7 @@
             <!-- END form step 4 -->
 
             <!-- START form step 5 -->
-            <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 5}" data-screen-no="5">
+            <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
                 <div class="para">Hva har du omsatt under coronatider</div>
 
                 <div class="value-field mt-1 mb-2">
@@ -190,6 +194,10 @@
 <!--                </div>-->
             </div>
             <!-- END form step 5 -->
+
+            <div class="form-notices" v-show="formErrors.length">
+                <div class="error" v-for="error in formErrors">{{error}}</div>
+            </div>
         </div>
 
     </div>

@@ -13,10 +13,12 @@
 
 .theme-green {
   --primary: #07B474;
+  --primary-light: rgba(7, 180, 116, 0.32);
 }
 
 .theme-blue {
   --primary: #06b2ff;
+  --primary-light: rgba(6, 178, 255, 0.27);
 }
 
 .pace {
@@ -789,6 +791,11 @@ select {
   color: #fff;
 }
 
+.btn:disabled {
+  background: #eee;
+  color: #a0a0a0;
+}
+
 /*======== START btn ==========*/
 /*======== START header ==========*/
 .header {
@@ -1010,6 +1017,22 @@ select {
   font-weight: normal;
   font-size: 16px;
   line-height: 32px;
+}
+
+.form-notices {
+  margin-top: 35px;
+}
+
+.form-notices .error {
+  background-color: var(--primary-light);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  line-height: 20px;
+}
+
+.form-notices .error:last-child {
+  margin-bottom: 0;
 }
 
 /* ======= END calculator =======*/

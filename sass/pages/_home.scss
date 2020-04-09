@@ -161,6 +161,22 @@
     line-height: 32px;
   }
 }
+
+.form-notices {
+  margin-top: 35px;
+
+  .error {
+    background-color: var(--primary-light);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    line-height: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
 /* ======= END calculator =======*/
 @media screen and (min-width: 768px) {
   #calculator {

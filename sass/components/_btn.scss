@@ -35,5 +35,12 @@
       color: #fff;
     }
   }
+
+
+  //disabled state
+  &:disabled {
+    background: #eee;
+    color: #a0a0a0;
+  }
 }
 /*======== START btn ==========*/
