@@ -20,7 +20,7 @@ let calculator = new Vue({
     el: '#calculator',
     data: {
         totalScreens: 0,
-        currentActiveScreen: 1,
+        currentActiveScreen: 4,
         formErrors: [],
         // calculation data
         availableMonths: [

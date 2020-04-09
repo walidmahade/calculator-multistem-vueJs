@@ -660,6 +660,11 @@ body {
   font-weight: 500;
 }
 
+.para-normal {
+  font-size: 14px;
+  line-height: 22px;
+}
+
 .container {
   width: 100%;
   max-width: 1180px;
@@ -1033,6 +1038,15 @@ select {
 
 .form-notices .error:last-child {
   margin-bottom: 0;
+}
+
+.general-infos ul {
+  font-weight: 400;
+}
+
+.general-infos ul li {
+  font-size: 14px;
+  line-height: 22px;
 }
 
 /* ======= END calculator =======*/

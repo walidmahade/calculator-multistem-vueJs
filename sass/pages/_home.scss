@@ -177,6 +177,16 @@
     }
   }
 }
+
+.general-infos {
+  ul {
+    font-weight: 400;
+    li {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}
 /* ======= END calculator =======*/
 @media screen and (min-width: 768px) {
   #calculator {

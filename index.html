@@ -186,19 +186,34 @@
                         <li>7500	Forsikringspremie</li>
                     </ul>
                 </div>
-
-<!--                <div class="cta">-->
-<!--                    <button class="btn btn&#45;&#45;primary uppercase"-->
-<!--                            @click="goNext"-->
-<!--                    >Neste</button>-->
-<!--                </div>-->
             </div>
             <!-- END form step 5 -->
-
             <div class="form-notices" v-show="formErrors.length">
                 <div class="error" v-for="error in formErrors">{{error}}</div>
             </div>
+            <!-- sada -->
+            <!-- last step info-->
+            <div class="form-notices general-infos" v-show="currentActiveScreen == 4">
+                <h3 class="para">Om erstatningsordningen</h3>
+                <div class="para para-normal"><b>Ordningen gjelder for alle skattepliktige registrerte selskaper i Norge, med noen unntak, andre:</b></div>
+                <ul class="mt-1">
+                    <li>Finanstjenesteindustrien</li>
+                    <li>Produksjon, overføring og distribusjon av strøm og vannforsyning</li>
+                    <li>Gjenvinning av olje og gass</li>
+                    <li>Foretak som er under egne støtteordninger som private barnehager og flyselskaper</li>
+                    <li>Foretak uten ansatte (unntatt enmannsforetak der virksomheten er eierens viktigste inntektskilde)</li>
+                    <li>Foretak uten aktivitet eller konkursbehandling</li>
+                </ul>
+
+                <h3 class="para mt-3">Forbehold om støtteordningskalkulatoren</h3>
+                <div class="para para-normal" style="font-weight: 400">
+                    Utregningen i støtteordningskalkulatoren tar utgangspunktet i regjeringens informasjon som ble presentert 3.april. Vår beregningsmodell er enklet laget og vil passe de fleste. Dersom det er vurderinger som må taes anbefaler vi deg å kontakte regnskapsføreren din eller oss for bistand.
+                </div>
+            </div>
+            <!-- sada -->
         </div>
+
+
 
     </div>
 </main>
