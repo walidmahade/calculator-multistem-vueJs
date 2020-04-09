@@ -907,7 +907,7 @@ select {
   box-shadow: 0 20px 40px rgba(33, 37, 41, 0.04);
   border-radius: 20px;
   margin: 20px auto 80px auto;
-  padding: 50px;
+  padding: 65px 50px 50px 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1024,6 +1024,16 @@ select {
   line-height: 32px;
 }
 
+.screen-5 ul li:before {
+  content: "";
+  margin-right: 10px;
+  background: url("../images/check-green.png");
+  background-size: cover;
+  display: inline-block;
+  height: 10px;
+  width: 12px;
+}
+
 .form-notices {
   margin-top: 35px;
 }
@@ -1049,10 +1059,20 @@ select {
   line-height: 22px;
 }
 
+.general-infos ul li:before {
+  content: "";
+  margin-right: 10px;
+  background: url("../images/x-1.png");
+  background-size: cover;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
 /* ======= END calculator =======*/
 @media screen and (min-width: 768px) {
   #calculator {
-    padding: 130px;
+    padding: 130px 120px;
     margin: 100px auto 150px auto;
   }
 }
