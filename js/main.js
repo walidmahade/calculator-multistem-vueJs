@@ -106,15 +106,15 @@ let calculator = new Vue({
             let val;
 
             if (this.formData.govAid.closedByGov) {
-                val = (this.formData.afterCoronaMonthlyIncome - this.formData.operationExpense) * (this.formData.salesDiff / 100) * this.formData.govAid.aidPercent;
+                val = this.formData.operationExpense * (this.formData.salesDiff / 100) * this.formData.govAid.aidPercent;
             } else {
                 val = (
                     (((this.formData.salesDiff / 100) * this.formData.operationExpense) - 10000) * this.formData.govAid.aidPercent
                 )
             }
 
-            if (val > 0 && this.formData.operationExpense) {
-                return val;
+            if (this.formData.operationExpense) {
+                return val.toFixed(2);
             } else {
                 return '';
             }
