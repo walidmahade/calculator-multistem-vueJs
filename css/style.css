@@ -621,6 +621,10 @@ b {
 }
 
 /*=========== END spacing ===========*/
+.text-center {
+  text-align: center;
+}
+
 @font-face {
   font-family: 'Graphik';
   src: url("../fonts/Graphik-Regular.eot");
@@ -883,6 +887,16 @@ select {
   #form-progress {
     margin-top: 0;
   }
+}
+
+.footer {
+  padding: 10px 0 40px 0;
+  font-size: 14px;
+}
+
+.footer a {
+  text-decoration: underline;
+  color: var(--primary);
 }
 
 /*======== START hero ==========*/

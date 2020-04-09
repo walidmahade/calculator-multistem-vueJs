@@ -118,19 +118,21 @@ let calculator = new Vue({
             this.formErrors = [];
 
             if (this.formData.govAid.closedByGov) {
-                val = this.formData.operationExpense * (this.formData.salesDiff / 100) * this.formData.govAid.aidPercent;
+                val = Math.round(
+                    this.formData.operationExpense * (this.formData.salesDiff / 100) * this.formData.govAid.aidPercent
+                );
             } else {
-                val = (
+                val = Math.round(
                     (this.formData.salesDiff / 100) * (this.formData.operationExpense - 10000) * this.formData.govAid.aidPercent
                 )
             }
 
-            if (this.formData.operationExpense) {
-                if (Math.round(val) < 5000)
+            if (this.formData.operationExpense && val > 0) {
+                if (val < 5000)
                     this.formErrors.push('Det er satt en minstegrense for utbetaling, slik at beregnet støttebeløp under 5000 kroner utbetales ikke.');
-                return Math.round(val);
+                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' kr';
             } else {
-                return '';
+                return 0;
             }
         }
     },

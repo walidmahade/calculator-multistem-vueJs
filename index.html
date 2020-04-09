@@ -13,9 +13,9 @@
 
 <header class="header" role="banner">
     <div class="container">
-        <div class="brand" @click="resetForm">
+        <a class="brand" href="https://www.nobaconsulting.no/">
             <img src="images/Noba-Logo.png" alt="logo-calculator-for-corona-gov-aid">
-        </div>
+        </a>
 
         <div id="form-progress">
             <div class="bar" ref="progressBar">{{progress}}%</div>
@@ -91,7 +91,10 @@
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="Eks: 350000">
+                        <input type="number" name="monthlyIncome"
+                           v-model="formData.regularMonthlyIncome"
+                           placeholder="Eks: 350000"
+                        >
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -151,7 +154,7 @@
 
             <!-- START form step 5 -->
             <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
-                <div class="para">Hva er dine faste/uungålige kostnader?</div>
+                <div class="para">Hva er dine faste/uunngåelige kostnader?</div>
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
@@ -175,6 +178,7 @@
                         <li>7040	Forsikring og avgifter på transportmidler</li>
                         <li>7490    Kontigenter</li>
                         <li>7500	Forsikringspremie</li>
+                        <li>8150 – 8050	Annen rentekostnad – Annen renteinntekt (nettobeløp)</li>
                     </ul>
                 </div>
 
@@ -224,6 +228,13 @@
 
     </div>
 </main>
+
+<footer class="footer">
+    <div class="container text-center">
+        Laget av <a href="https://getonnet.no/" target="_blank">Getonnet</a> I sammarbeid med <a href="https://www.nobaconsulting.no/">Noba</a> og
+        <a href="https://www.soly.no/">Soly</a>
+    </div>
+</footer>
 
 <script src="js/library/pace.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
