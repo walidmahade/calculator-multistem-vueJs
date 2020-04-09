@@ -5,6 +5,7 @@
   --white: #fff;
   --link: #181825;
   --text: #212529;
+  --green: #07B474;
   --h-font: 'Graphik', sans-serif;
   --b-font: 'Graphik', sans-serif;
   --border-rad: 50px;
@@ -1011,6 +1012,10 @@ select {
 
 .screen-5 .display-text-field {
   position: relative;
+}
+
+.screen-5 .display-text-field input {
+  color: var(--green);
 }
 
 .screen-5 .total-text {

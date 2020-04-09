@@ -114,7 +114,7 @@ let calculator = new Vue({
             }
 
             if (this.formData.operationExpense) {
-                return val.toFixed(2);
+                return Math.round(val);
             } else {
                 return '';
             }

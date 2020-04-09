@@ -148,6 +148,10 @@
 .screen-5 {
   .display-text-field {
     position: relative;
+
+    input {
+      color: var(--green);
+    }
   }
 
   .total-text {
