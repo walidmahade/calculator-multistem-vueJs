@@ -6,6 +6,8 @@
   --link: #181825;
   --text: #212529;
   --green: #07B474;
+  --red: #E75555;
+  --light-red: rgba(231, 85, 85, 0.1);
   --h-font: 'Graphik', sans-serif;
   --b-font: 'Graphik', sans-serif;
   --border-rad: 50px;
@@ -760,6 +762,10 @@ select {
   line-height: 22px;
 }
 
+.info-box .para {
+  line-height: 22px;
+}
+
 /*======== END btn ==========*/
 .btn {
   background-color: transparent;
@@ -908,7 +914,7 @@ select {
   box-shadow: 0 20px 40px rgba(33, 37, 41, 0.04);
   border-radius: 20px;
   margin: 20px auto 80px auto;
-  padding: 65px 50px 50px 50px;
+  padding: 85px 50px 50px 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1044,7 +1050,7 @@ select {
 }
 
 .form-notices .error {
-  background-color: var(--primary-light);
+  background-color: var(--light-red);
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px;

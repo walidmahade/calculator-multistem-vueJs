@@ -91,7 +91,7 @@
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="ex: 350000">
+                        <input type="number" name="monthlyIncome" v-model="formData.regularMonthlyIncome" placeholder="Eks: 350000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -110,7 +110,7 @@
                         <input type="number"
                            name="monthlyIncome"
                            v-model="formData.afterCoronaMonthlyIncome"
-                           placeholder="ex: 100000"
+                           placeholder="Eks: 100000"
                         >
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
@@ -155,7 +155,7 @@
 
                 <div class="value-field mt-1 mb-2">
                     <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.operationExpense" placeholder="ex: 350000">
+                        <input type="number" name="monthlyIncome" v-model="formData.operationExpense" placeholder="Eks: 350000">
                         <div class="btn-group">
                             <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
                             <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="info-box font-400">
-                    <div><b>Poster i næringsoppgaven:</b></div>
+                    <div class="para mb-1"><b>Eksempel på uunngålige faste kostnader kan være disse postene i næringsoppgaven:</b></div>
                     <ul>
                         <li>6300	Leie lokaler</li>
                         <li>6340	Lys, varme</li>
@@ -182,7 +182,7 @@
 
                 <div class="value-field mt-1">
                     <div class="display-text-field display-text-field--total">
-                        <input type="text" readonly name="monthlyIncome" v-model="canApplyFor" placeholder="ex: 45000">
+                        <input type="text" readonly name="monthlyIncome" v-model="canApplyFor" placeholder="Eks: 45000">
                         <span class="total-text">Totalt</span>
                     </div>
                 </div>
@@ -210,6 +210,11 @@
                 <h3 class="para mt-3">Forbehold om støtteordningskalkulatoren</h3>
                 <div class="para para-normal" style="font-weight: 400">
                     Utregningen i støtteordningskalkulatoren tar utgangspunktet i regjeringens informasjon som ble presentert 3.april. Vår beregningsmodell er enklet laget og vil passe de fleste. Dersom det er vurderinger som må taes anbefaler vi deg å kontakte regnskapsføreren din eller oss for bistand.
+                </div>
+                <div class="para para-normal mt-2">
+                    <a href="https://www.regjeringen.no/no/aktuelt/foretak-med-minst-30--omsetningsfall-kan-fa-kompensasjon/id2696396/" target="_blank">
+                        https://www.regjeringen.no/no/aktuelt/foretak-med-minst-30--omsetningsfall-kan-fa-kompensasjon/id2696396/
+                    </a>
                 </div>
             </div>
             <!-- sada -->

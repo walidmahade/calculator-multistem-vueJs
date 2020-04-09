@@ -27,7 +27,7 @@ let calculator = new Vue({
             'Mars', 'April', 'Mai'
         ],
         formData: {
-            selectMonth: 'April',
+            selectMonth: 'Mars',
             regularMonthlyIncome: '',
             afterCoronaMonthlyIncome: '',
             salesDiffIsPositive: false,
@@ -54,13 +54,20 @@ let calculator = new Vue({
             this.updateProgressBar(this.currentActiveScreen);
         },
         goPrev: function () {
+            this.formErrors = [];
             this.currentActiveScreen = this.currentActiveScreen - 1;
             this.updateProgressBar(this.currentActiveScreen);
         },
         resetForm: function () {
             this.currentActiveScreen = 1;
-            this.regularMonthlyIncome = '';
-            this.salesDiff = '';
+            this.formData.selectMonth = 'Mars';
+            this.formData.regularMonthlyIncome = '';
+            this.formData.afterCoronaMonthlyIncome = '';
+            this.formData.salesDiffIsPositive = false;
+            this.formData.salesDiff = '';
+            this.formData.operationExpense = '';
+            this.formData.govAid.closedByGov = '';
+            this.formData.govAid.aidPercent = 0;
             this.formErrors = [];
             this.updateProgressBar(this.currentActiveScreen);
         },
@@ -84,12 +91,16 @@ let calculator = new Vue({
         salesDiff: function () {
             this.formErrors = [];
             if (this.formData.afterCoronaMonthlyIncome && this.formData.regularMonthlyIncome) {
-                let sd = (1 - this.formData.afterCoronaMonthlyIncome / this.formData.regularMonthlyIncome) * 100;
+                let sd = Math.round((1 - this.formData.afterCoronaMonthlyIncome / this.formData.regularMonthlyIncome) * 100);
                 if (sd < 0) {
                     this.formErrors.push("Salgsforskjellen må være positiv");
                     this.formData.salesDiffIsPositive = false;
-                } else if (sd > 0 && sd < 20) {
-                    this.formErrors.push("Forskjellen i salg må være 20% eller mer");
+                } else if (sd > 0 && sd < 20 && this.formData.selectMonth === 'Mars') {
+                    console.log(sd<20, "----", sd);
+                    this.formErrors.push("Nedgangen i omsettning må være 20% eller mer ssss");
+                    this.formData.salesDiffIsPositive = false;
+                } else if (sd > 0 && sd < 30 && this.formData.selectMonth !== 'Mars') {
+                    this.formErrors.push("Nedgangen i omsettning må være 30% eller mer");
                     this.formData.salesDiffIsPositive = false;
                 } else {
                     this.formData.salesDiffIsPositive = true;
@@ -104,16 +115,19 @@ let calculator = new Vue({
         },
         canApplyFor: function () {
             let val;
+            this.formErrors = [];
 
             if (this.formData.govAid.closedByGov) {
                 val = this.formData.operationExpense * (this.formData.salesDiff / 100) * this.formData.govAid.aidPercent;
             } else {
                 val = (
-                    (((this.formData.salesDiff / 100) * this.formData.operationExpense) - 10000) * this.formData.govAid.aidPercent
+                    (this.formData.salesDiff / 100) * (this.formData.operationExpense - 10000) * this.formData.govAid.aidPercent
                 )
             }
 
             if (this.formData.operationExpense) {
+                if (Math.round(val) < 5000)
+                    this.formErrors.push('Det er satt en minstegrense for utbetaling, slik at beregnet støttebeløp under 5000 kroner utbetales ikke.');
                 return Math.round(val);
             } else {
                 return '';

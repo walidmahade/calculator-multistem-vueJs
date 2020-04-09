@@ -36,7 +36,7 @@
   box-shadow: 0 20px 40px rgba(33, 37, 41, 0.04);
   border-radius: 20px;
   margin: 20px auto 80px auto;
-  padding: 65px 50px 50px 50px;
+  padding: 85px 50px 50px 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -184,7 +184,7 @@
   margin-top: 35px;
 
   .error {
-    background-color: var(--primary-light);
+    background-color: var(--light-red);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 15px;
