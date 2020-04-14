@@ -2,244 +2,252 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163645123-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163645123-1');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kompensasjonskalkulator</title>
     <link rel="shortcut icon" href="images/favicopn.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header class="header" role="banner">
-    <div class="container">
-        <a class="brand" href="https://www.nobaconsulting.no/">
-            <img src="images/Noba-Logo.png" alt="logo-calculator-for-corona-gov-aid">
-        </a>
+    <header class="header" role="banner">
+        <div class="container">
+            <a class="brand" href="https://www.nobaconsulting.no/">
+                <img src="images/Noba-Logo.png" alt="logo-calculator-for-corona-gov-aid">
+            </a>
 
-        <div id="form-progress">
-            <div class="bar" ref="progressBar">{{progress}}%</div>
+            <div id="form-progress">
+                <div class="bar" ref="progressBar">{{progress}}%</div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<main role="main">
-    <div class="container">
+    <main role="main" id="calculator-wrap">
+        <div class="container">
 
-        <div id="calculator" :data-current-screen="currentActiveScreen" :data-screen-count="totalScreens">
+            <div class="main-heading" v-show="currentActiveScreen==1">
+                <h2 class="title-big mb-1">Kompensasjonskalkulator</h2>
+                <div class="para para-normal">Regjeringen har kommet med en «kontantstøtteordning» til næringslivet som kan dekke en prosent av de faste kostnadene for bedrifter som lider økonomisk. Vi har laga en kalkulator for å hjelpe bedrifter med å regne ut dette.</div>
+            </div>
 
-            <div class="calculator-header" v-show="currentActiveScreen>1">
-                <div class="go-back" @click="goPrev">
-                    <span class="icon">
-                        <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div id="calculator" :data-current-screen="currentActiveScreen" :data-screen-count="totalScreens">
+
+                <div class="calculator-header" v-show="currentActiveScreen>1">
+                    <div class="go-back" @click="goPrev">
+                        <span class="icon">
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.80859 0L0 5L4.80859 10L6 8.76117L2.38281 5L6 1.23883L4.80859 0Z" fill="#363D4D"/>
                         </svg>
-                    </span>
-                    <span class="text">
-                        Tilbake
-                    </span>
-                </div>
+                        </span>
+                        <span class="text">
+                            Tilbake
+                        </span>
+                    </div>
 
-                <div class="go-reset" @click="resetForm">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="go-reset" @click="resetForm">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="16" height="16" rx="8"/>
                         <path d="M10.2505 5L8 7.25L5.75 5L5 5.75L7.25 8L5 10.25L5.75 11L8 8.75L10.2505 11L11.0005 10.25L8.75053 8L11.0005 5.75L10.2505 5Z" fill="white"/>
                     </svg>
-                </div>
-            </div>
-
-            <!-- START form step 1 -->
-            <div class="screen screen-1" :class="{'screen--active': currentActiveScreen === 1}" data-screen-no="1">
-                <h2 class="title-big mb-2">Hvilken måned beregner du støtte for?</h2>
-<!--                <div class="para">Hvilken måned beregner du støtte for?</div>-->
-
-                <div class="value-field mt-1 mb-4">
-                    <select v-model="formData.selectMonth" id="select-month">
-<!--                        <option :value="{month: 'march'}">March</option>-->
-<!--                        <option :value="{month: 'april'}" selected>April</option>-->
-<!--                        <option :value="{month: 'may'}">May</option>-->
-                        <option v-for="month in availableMonths"
-                            :value="month"
-                        >{{ month }}</option>
-                    </select>
+                    </div>
                 </div>
 
-                <div class="cta">
-                    <button class="btn btn--primary uppercase"
-                        @click="goNext"
-                    >Neste</button>
+                <!-- START form step 1 -->
+                <div class="screen screen-1" :class="{'screen--active': currentActiveScreen === 1}" data-screen-no="1">
+                    <h2 class="title-big mb-2">Hvilken måned beregner du støtte for?</h2>
+                    <!--                <div class="para">Hvilken måned beregner du støtte for?</div>-->
+
+                    <div class="value-field mt-1 mb-4">
+                        <select v-model="formData.selectMonth" id="select-month">
+                            <!--                        <option :value="{month: 'march'}">March</option>-->
+                            <!--                        <option :value="{month: 'april'}" selected>April</option>-->
+                            <!--                        <option :value="{month: 'may'}">May</option>-->
+                            <option v-for="month in availableMonths"
+                                    :value="month">{{ month }}</option>
+                        </select>
+                    </div>
+
+                    <div class="cta">
+                        <button class="btn btn--primary uppercase"
+                                @click="goNext">Neste</button>
+                    </div>
                 </div>
-            </div>
-            <!-- END form step 1 -->
+                <!-- END form step 1 -->
 
-            <!-- START form step 2 -->
-<!--            <div class="screen screen-2" :class="{'screen&#45;&#45;active': currentActiveScreen === 2}" data-screen-no="2">-->
-<!--                <div class="para mb-2">Har du hatt omsettningsfall?</div>-->
+                <!-- START form step 2 -->
+                <!--            <div class="screen screen-2" :class="{'screen&#45;&#45;active': currentActiveScreen === 2}" data-screen-no="2">-->
+                <!--                <div class="para mb-2">Har du hatt omsettningsfall?</div>-->
 
-<!--                <div class="value-field mt-1">-->
-<!--                    <div class="btn-group">-->
-<!--                        <button class="btn btn&#45;&#45;light" @click="goNext">Ja</button>-->
-<!--                        <button class="btn btn&#45;&#45;light" @click="resetForm">Nei</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-            <!-- END form step 2 -->
+                <!--                <div class="value-field mt-1">-->
+                <!--                    <div class="btn-group">-->
+                <!--                        <button class="btn btn&#45;&#45;light" @click="goNext">Ja</button>-->
+                <!--                        <button class="btn btn&#45;&#45;light" @click="resetForm">Nei</button>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!-- END form step 2 -->
 
-            <!-- START form step 3 -->
-            <div class="screen screen-3" :class="{'screen--active': currentActiveScreen === 2}" data-screen-no="2">
-                <div class="para">Hva har du normalt hatt i omsettning i {{ formData.selectMonth }}</div>
+                <!-- START form step 3 -->
+                <div class="screen screen-3" :class="{'screen--active': currentActiveScreen === 2}" data-screen-no="2">
+                    <div class="para">Hva har du normalt hatt i omsettning i {{ formData.selectMonth }}</div>
 
-                <div class="value-field mt-1 mb-2">
-                    <div class="number-field">
-                        <input type="number" name="monthlyIncome"
-                           v-model="formData.regularMonthlyIncome"
-                           placeholder="Eks: 350000"
-                        >
+                    <div class="value-field mt-1 mb-2">
+                        <div class="number-field">
+                            <input type="number" name="monthlyIncome"
+                                   v-model="formData.regularMonthlyIncome"
+                                   placeholder="Eks: 350000">
+                            <div class="btn-group">
+                                <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                                <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box font-400 mb-3">
+                        <b>Eks:</b> dersom du har jevn omsettning siste månedene bruk snittet i Januar og Februar. Dersom du har store variasjoner måned for måned kan du se samme måned i fjor.
+                    </div>
+
+                    <div class="para">Hva har din omsettning vært i {{ formData.selectMonth }} 2020</div>
+
+                    <div class="value-field mt-1 mb-3">
+                        <div class="number-field">
+                            <input type="number"
+                                   name="monthlyIncome"
+                                   v-model="formData.afterCoronaMonthlyIncome"
+                                   placeholder="Eks: 100000">
+                            <div class="btn-group">
+                                <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                                <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="para">Ditt omsettningsfall har vært</div>
+
+                    <div class="value-field mt-1 mb-1 mb-4">
+                        <div class="display-text-field">
+                            <input type="text" readonly name="monthlyIncome"
+                                   v-model="salesDiff" placeholder="70.25">
+                        </div>
+                    </div>
+
+                    <div class="cta">
+                        <button class="btn btn--primary uppercase"
+                                @click="goNext" :disabled="!formData.salesDiffIsPositive">Neste</button>
+                    </div>
+                </div>
+                <!-- END form step 3 -->
+
+                <!-- START form step 4 -->
+                <div class="screen screen-4" :class="{'screen--active': currentActiveScreen === 3}" data-screen-no="3">
+                    <div class="para mb-2">Er du pålagt å stenge?</div>
+
+                    <div class="value-field mt-1">
                         <div class="btn-group">
-                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
-                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                            <button class="btn btn--light" @click="wasClosedByGov(true)">Ja</button>
+                            <button class="btn btn--light" @click="wasClosedByGov(false)">Nei</button>
                         </div>
                     </div>
                 </div>
+                <!-- END form step 4 -->
 
-                <div class="info-box font-400 mb-3">
-                    <b>Eks:</b> dersom du har jevn omsettning siste månedene bruk snittet i Januar og Februar. Dersom du har store variasjoner måned for måned kan du se samme måned i fjor.
-                </div>
+                <!-- START form step 5 -->
+                <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
+                    <div class="para">Hva er dine faste/uunngåelige kostnader?</div>
 
-                <div class="para">Hva har du omsatt under coronatider</div>
-
-                <div class="value-field mt-1 mb-3">
-                    <div class="number-field">
-                        <input type="number"
-                           name="monthlyIncome"
-                           v-model="formData.afterCoronaMonthlyIncome"
-                           placeholder="Eks: 100000"
-                        >
-                        <div class="btn-group">
-                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
-                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                    <div class="value-field mt-1 mb-2">
+                        <div class="number-field">
+                            <input type="number" name="monthlyIncome" v-model="formData.operationExpense" placeholder="Eks: 350000">
+                            <div class="btn-group">
+                                <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
+                                <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="para">Ditt omsettningsfall har vært</div>
-
-                <div class="value-field mt-1 mb-1 mb-4">
-                    <div class="display-text-field">
-                        <input type="text" readonly name="monthlyIncome"
-                               v-model="salesDiff" placeholder="70.25">
+                    <div class="info-box font-400">
+                        <div class="para mb-1"><b>Eksempel på uunngålige faste kostnader kan være disse postene i næringsoppgaven:</b></div>
+                        <ul>
+                            <li>6300 Leie lokaler</li>
+                            <li>6340 Lys, varme</li>
+                            <li>6395 Renovasjon, vann, avløp, renhold mv.</li>
+                            <li>6400 Leie maskiner, inventar, transportmidler o.l.</li>
+                            <li>6700 Fremmed tjeneste (regnskap, revisjon, rådgivning o.l.)</li>
+                            <li>6995 Elektrinisk kommunikasjon</li>
+                            <li>7040 Forsikring og avgifter på transportmidler</li>
+                            <li>7490 Kontigenter</li>
+                            <li>7500 Forsikringspremie</li>
+                            <li>8150 – 8050 Annen rentekostnad – Annen renteinntekt (nettobeløp)</li>
+                        </ul>
                     </div>
-                </div>
 
-                <div class="cta">
-                    <button class="btn btn--primary uppercase"
-                        @click="goNext" :disabled="!formData.salesDiffIsPositive"
-                    >Neste</button>
-                </div>
-            </div>
-            <!-- END form step 3 -->
+                    <div class="para mt-2">Du kan søke om denne summen</div>
 
-            <!-- START form step 4 -->
-            <div class="screen screen-4" :class="{'screen--active': currentActiveScreen === 3}" data-screen-no="3">
-                <div class="para mb-2">Er du pålagt å stenge?</div>
-
-                <div class="value-field mt-1">
-                    <div class="btn-group">
-                        <button class="btn btn--light" @click="wasClosedByGov(true)">Ja</button>
-                        <button class="btn btn--light" @click="wasClosedByGov(false)">Nei</button>
-                    </div>
-                </div>
-            </div>
-            <!-- END form step 4 -->
-
-            <!-- START form step 5 -->
-            <div class="screen screen-5" :class="{'screen--active': currentActiveScreen === 4}" data-screen-no="4">
-                <div class="para">Hva er dine faste/uunngåelige kostnader?</div>
-
-                <div class="value-field mt-1 mb-2">
-                    <div class="number-field">
-                        <input type="number" name="monthlyIncome" v-model="formData.operationExpense" placeholder="Eks: 350000">
-                        <div class="btn-group">
-                            <span class="btn-increment"><img src="images/arrow-increment.svg" alt=""></span>
-                            <span class="btn-decrement"><img src="images/arrow-decrement.svg" alt=""></span>
+                    <div class="value-field mt-1">
+                        <div class="display-text-field display-text-field--total">
+                            <input type="text" readonly name="monthlyIncome" v-model="canApplyFor" placeholder="Eks: 45000">
+                            <span class="total-text">Totalt</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="info-box font-400">
-                    <div class="para mb-1"><b>Eksempel på uunngålige faste kostnader kan være disse postene i næringsoppgaven:</b></div>
-                    <ul>
-                        <li>6300	Leie lokaler</li>
-                        <li>6340	Lys, varme</li>
-                        <li>6395	Renovasjon, vann, avløp, renhold mv.</li>
-                        <li>6400	Leie maskiner, inventar, transportmidler o.l.</li>
-                        <li>6700	Fremmed tjeneste (regnskap, revisjon, rådgivning o.l.)</li>
-                        <li>6995	Elektrinisk kommunikasjon</li>
-                        <li>7040	Forsikring og avgifter på transportmidler</li>
-                        <li>7490    Kontigenter</li>
-                        <li>7500	Forsikringspremie</li>
-                        <li>8150 – 8050	Annen rentekostnad – Annen renteinntekt (nettobeløp)</li>
+
+                </div>
+                <!-- END form step 5 -->
+                <div class="form-notices" v-show="formErrors.length">
+                    <div class="error" v-for="error in formErrors">{{error}}</div>
+                </div>
+                <!-- sada -->
+                <!-- last step info-->
+                <div class="form-notices general-infos" v-show="currentActiveScreen == 4">
+                    <h3 class="para">Om erstatningsordningen</h3>
+                    <div class="para para-normal"><b>Ordningen gjelder for alle skattepliktige registrerte selskaper i Norge, med noen unntak:</b></div>
+                    <ul class="mt-1">
+                        <li>Finanstjenesteindustrien</li>
+                        <li>Produksjon, overføring og distribusjon av strøm og vannforsyning</li>
+                        <li>Gjenvinning av olje og gass</li>
+                        <li>Foretak som er under egne støtteordninger som private barnehager og flyselskaper</li>
+                        <li>Foretak uten ansatte (unntatt enmannsforetak der virksomheten er eierens viktigste inntektskilde)</li>
+                        <li>Foretak uten aktivitet eller konkursbehandling</li>
                     </ul>
-                </div>
 
-                <div class="para mt-2">Du kan søke om denne summen</div>
-
-                <div class="value-field mt-1">
-                    <div class="display-text-field display-text-field--total">
-                        <input type="text" readonly name="monthlyIncome" v-model="canApplyFor" placeholder="Eks: 45000">
-                        <span class="total-text">Totalt</span>
+                    <h3 class="para mt-3">Forbehold om støtteordningskalkulatoren</h3>
+                    <div class="para para-normal" style="font-weight: 400">
+                        Utregningen i støtteordningskalkulatoren tar utgangspunktet i regjeringens informasjon som ble presentert 3.april. Vår beregningsmodell er enklet laget og vil passe de fleste. Dersom det er vurderinger som må taes anbefaler vi deg å kontakte regnskapsføreren din eller oss for bistand.
+                    </div>
+                    <div class="para para-normal mt-2">
+                        <a href="https://www.regjeringen.no/no/aktuelt/foretak-med-minst-30--omsetningsfall-kan-fa-kompensasjon/id2696396/" target="_blank" style="text-decoration: underline">
+                            Les mer her.
+                        </a>
                     </div>
                 </div>
+                <!-- sada -->
+            </div>
 
 
-            </div>
-            <!-- END form step 5 -->
-            <div class="form-notices" v-show="formErrors.length">
-                <div class="error" v-for="error in formErrors">{{error}}</div>
-            </div>
-            <!-- sada -->
-            <!-- last step info-->
-            <div class="form-notices general-infos" v-show="currentActiveScreen == 4">
-                <h3 class="para">Om erstatningsordningen</h3>
-                <div class="para para-normal"><b>Ordningen gjelder for alle skattepliktige registrerte selskaper i Norge, med noen unntak, andre:</b></div>
-                <ul class="mt-1">
-                    <li>Finanstjenesteindustrien</li>
-                    <li>Produksjon, overføring og distribusjon av strøm og vannforsyning</li>
-                    <li>Gjenvinning av olje og gass</li>
-                    <li>Foretak som er under egne støtteordninger som private barnehager og flyselskaper</li>
-                    <li>Foretak uten ansatte (unntatt enmannsforetak der virksomheten er eierens viktigste inntektskilde)</li>
-                    <li>Foretak uten aktivitet eller konkursbehandling</li>
-                </ul>
 
-                <h3 class="para mt-3">Forbehold om støtteordningskalkulatoren</h3>
-                <div class="para para-normal" style="font-weight: 400">
-                    Utregningen i støtteordningskalkulatoren tar utgangspunktet i regjeringens informasjon som ble presentert 3.april. Vår beregningsmodell er enklet laget og vil passe de fleste. Dersom det er vurderinger som må taes anbefaler vi deg å kontakte regnskapsføreren din eller oss for bistand.
-                </div>
-                <div class="para para-normal mt-2">
-                    <a href="https://www.regjeringen.no/no/aktuelt/foretak-med-minst-30--omsetningsfall-kan-fa-kompensasjon/id2696396/" target="_blank" style="text-decoration: underline">
-                        Les mer her.
-                    </a>
-                </div>
-            </div>
-            <!-- sada -->
         </div>
+    </main>
 
+    <footer class="footer">
+        <div class="container text-center">
+            Laget av <a href="https://getonnet.no/" target="_blank">Getonnet</a> I sammarbeid med <a href="https://www.nobaconsulting.no/">Noba</a> og
+            <a href="https://www.soly.no/">Soly</a>
+        </div>
+    </footer>
 
-
-    </div>
-</main>
-
-<footer class="footer">
-    <div class="container text-center">
-        Laget av <a href="https://getonnet.no/" target="_blank">Getonnet</a> I sammarbeid med <a href="https://www.nobaconsulting.no/">Noba</a> og
-        <a href="https://www.soly.no/">Soly</a>
-    </div>
-</footer>
-
-<script src="js/library/pace.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>-->
-<script src="js/main.js"></script>
+    <script src="js/library/pace.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>-->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

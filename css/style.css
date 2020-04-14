@@ -927,6 +927,21 @@ select {
 }
 
 /*======== END hero ==========*/
+.main-heading {
+  width: 100%;
+  max-width: 640px;
+  margin: 20px auto 0 auto;
+}
+
+.main-heading .title-big {
+  font-weight: 500;
+}
+
+.main-heading .para.para-normal {
+  font-size: 16px;
+  font-weight: 400;
+}
+
 /* ======= START calculator =======*/
 #calculator {
   width: 100%;
@@ -1111,7 +1126,7 @@ select {
 @media screen and (min-width: 768px) {
   #calculator {
     padding: 130px 120px;
-    margin: 100px auto 150px auto;
+    margin: 30px auto 150px auto;
   }
 }
 
